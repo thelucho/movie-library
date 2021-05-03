@@ -1,4 +1,4 @@
-# movie-library
+# Movie Library
 A Movie Library made with Vue.js 2 using [The Movie Database API](https://www.themoviedb.org/)
 ## Project setup
 ```
