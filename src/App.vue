@@ -1,31 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 0;
+  padding: 0 0;
+  color: #263238;
 
-#nav {
-  padding: 30px;
+  .container {
+    height: 100vh;
+    display: flex;
+    padding-left: 250px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    .wrapper {
+      padding: 35px 50px;
+      height: max-content;
 
-    &.router-link-exact-active {
-      color: #42b983;
+      h1 {
+        margin-top: 0px;
+        margin-bottom: 35px;
+        color: #37474f;
+      }
     }
   }
 }

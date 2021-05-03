@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Sidebar />
+    <div class="wrapper">
+      <h1>Home</h1>
+      <movie-list :list="getMovies" />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapGetters } from "vuex"
+import MovieList from '@/components/MovieList.vue'
+import Sidebar from '../components/Sidebar.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    MovieList,
+    Sidebar
+  },
+  computed: {
+    ...mapGetters(["getMovies"]),
+  },
+  created() {
+    this.$store.dispatch("getMovies")
   }
 }
 </script>
