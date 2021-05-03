@@ -1,5 +1,5 @@
 # movie-library
-
+A Movie Library made with Vue.js 2 using [The Movie Database API](https://www.themoviedb.org/)
 ## Project setup
 ```
 npm install
