@@ -14,11 +14,17 @@ body {
   .container {
     height: 100vh;
     display: flex;
-    padding-left: 250px;
+    padding-left: 16vw;
+
+    .sidebar {
+      width: 16vw;
+    }
 
     .wrapper {
-      padding: 35px 50px;
+      width: 84vw;
       height: max-content;
+      overflow: hidden;
+      padding: 60px 40px;
 
       h1 {
         margin-top: 0px;

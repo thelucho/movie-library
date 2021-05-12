@@ -51,7 +51,7 @@ export default {
             cursor: pointer;
             border: 1px solid transparent;
             border-radius: 25px;
-            padding: 6px 30px;
+            padding: 6px 20px;
             transition: all .2s ease-in-out;
 
             svg {

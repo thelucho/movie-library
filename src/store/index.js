@@ -6,12 +6,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    movieItem: {},
     movies: [],
     moviesByGenre: [],
     genreList: []
   },
 
   getters: {
+    getMovieItem(state) {
+      return state.movieItem
+    },
+
     getMovies(state) {
       return state.movies
     },
@@ -24,6 +29,10 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setMovieItem(state, data) {
+      state.movieItem = data
+    },
+
     setMovies(state, data) {
       state.movies = data
     },
@@ -63,6 +72,25 @@ export default new Vuex.Store({
           .then((response) => {
             console.log("POR GENERO: ", response.data.results)
             context.commit('setMoviesByGenre', response.data.results)
+            resolve(response)
+          })
+          .catch((error) => {
+            console.log(error)
+            reject(error)
+          })
+      })
+    },
+
+    getMovieItem(context, movie_id) {
+      return new Promise((resolve, reject) => {
+        API.get(`/movie/${movie_id}?api_key=${process.env.VUE_APP_TMDB_API_KEY}`, {
+          params: {
+            append_to_response: 'videos',
+          },
+        })
+          .then((response) => {
+            console.log("MOVIE ITEM: ", response.data)
+            context.commit('setMovieItem', response.data)
             resolve(response)
           })
           .catch((error) => {

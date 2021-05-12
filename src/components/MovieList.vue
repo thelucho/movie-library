@@ -1,22 +1,24 @@
 <template>
     <div>
         <ul>
-            <li v-for="(movie, index) in list" :key="index">
-                <img :src="imagePath + movie.poster_path">
-                <div class="title">{{ movie.title }}</div>
-                <star-rating
-                active-color="#546e7a"
-                active-border-color="null"
-                :border-width="0"
-                border-color="#fff"
-                inactive-color="#ccc"
-                :padding="5"
-                :rating="roundRating(movie.vote_average)"
-                :read-only="true"
-                :round-start-rating="false"
-                :star-size="14"
-                :increment="0.01"
-                />
+            <li v-for="(movie, index) in list" :key="index" :id="movie.id">
+                <router-link :to="{ name: 'Movie', params: { id: movie.id } }">
+                    <img :src="imagePath + movie.poster_path">
+                    <div class="title">{{ movie.title }}</div>
+                    <star-rating
+                    active-color="#546e7a"
+                    active-border-color="null"
+                    :border-width="0"
+                    border-color="#fff"
+                    inactive-color="#ccc"
+                    :padding="5"
+                    :rating="roundRating(movie.vote_average)"
+                    :read-only="true"
+                    :round-start-rating="false"
+                    :star-size="14"
+                    :increment="0.01"
+                    />
+                </router-link>
             </li>
         </ul>
     </div>
@@ -61,35 +63,39 @@ ul {
         width: 230px;
         height: 390px;
 
-        img {
-            max-width: 230px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 17px 2px #e0e0e0;
-            transition: all .2s ease-in-out;
-        }
-
-        .title {
-            font-size: 13px;
-            color: #7b7b7b;
-            text-align: center;
-            line-height: 15px;
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .vue-star-rating {
-            font-size: 12px;
-            color: #7b7b7b;
-            justify-content: center;
-        }
-
-        &:hover {
-            cursor: pointer;
-
+        a {
+            text-decoration: none;
+            
             img {
-            transform: scale(1.03);
-            box-shadow: 0px 0px 17px 2px #cecece;
-            transition: all .2s ease-in-out;
+                max-width: 230px;
+                border-radius: 15px;
+                box-shadow: 0px 0px 17px 2px #e0e0e0;
+                transition: all .2s ease-in-out;
+            }
+
+            .title {
+                font-size: 13px;
+                color: #7b7b7b;
+                text-align: center;
+                line-height: 15px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .vue-star-rating {
+                font-size: 12px;
+                color: #7b7b7b;
+                justify-content: center;
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                img {
+                transform: scale(1.03);
+                box-shadow: 0px 0px 17px 2px #cecece;
+                transition: all .2s ease-in-out;
+                }
             }
         }
     }
